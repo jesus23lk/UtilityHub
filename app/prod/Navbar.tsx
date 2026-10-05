@@ -2,7 +2,7 @@
 
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import {Button} from './Buttons'
+import {Button} from '../Buttons'
 import { LayoutGrid } from 'lucide-react';
 
 const Navbar = ({text}: {text: string}) => {

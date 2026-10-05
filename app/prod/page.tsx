@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation'
-import Navbar from '../Navbar';
+import Navbar from './Navbar';
 import ActivitesBox from './Activities';
 import { MainBody } from '../Components';
 

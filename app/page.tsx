@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation'
-import Navbar from './Navbar';
+import Navbar from './budget/Navbar';
 import { ChevronRight, CircleDollarSign, LayoutList } from 'lucide-react';
 import Link from 'next/link'
 import { MainBody } from './Components';

@@ -2,8 +2,23 @@
 
 import { createClient } from "@/lib/supabase/client"
 import {Button} from '../Buttons'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Login = () => {
+
+  const router = useRouter()
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+
+      if (user) router.replace('/')
+    }
+
+    checkUser()
+  }, [router])
 
   const signIn = async () => {
     const supabase = createClient()
