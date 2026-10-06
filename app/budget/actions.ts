@@ -102,5 +102,23 @@ export const deleteTransaction = async (id: number) => {
     .eq('user_id', user.id)
 
   if (error) console.log(error.message)
+}
 
+type categoryStats = {
+  category: string,
+  total: number
+}
+
+export const getCategoryStats = async (): Promise<categoryStats[] | undefined> => {
+  const supabase = await createClient()
+
+  const { data, error } = await supabase
+    .rpc('get_category_totals')
+
+  if (error) {
+    console.log(error.message)
+    return
+  }
+
+  return data
 }

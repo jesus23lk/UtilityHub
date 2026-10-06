@@ -167,7 +167,7 @@ const Transaction = ({name, amount, date, id, category}:
         className='bg-white p-3 flex justify-between items-center cursor-pointer'
       >
         <div className='flex gap-3'>
-          <Icon/>
+          <Icon size={20}/>
           <div className='flex flex-col'>
             <span className='text-sm'>
               {name}

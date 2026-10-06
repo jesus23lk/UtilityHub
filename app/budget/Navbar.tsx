@@ -16,7 +16,7 @@ const Navbar = ({text}: {text: string}) => {
   return(
     <div className="
       flex items-center justify-between shadow
-      bg-white border-b border-gray-300 px-4 py-3 w-full
+      bg-white border-b border-gray-300 px-4 py-4 w-full
       sticky top-0 z-30
       "
     >

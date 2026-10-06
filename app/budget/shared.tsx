@@ -4,106 +4,106 @@ import {
   BookText, CarFront
 } from 'lucide-react'
 
-const Other = () => {
+const Other = ({ size }: { size: number }) => {
   return (
     <div className='flex justify-center items-center bg-gray-200 p-2 rounded-lg'>
-      <CreditCardIcon size={20} className='text-gray-600'/>
+      <CreditCardIcon size={size} className='text-gray-600'/>
     </div>
   )
 }
 
-const Dining = () => {
+const Dining = ({ size }: { size: number }) => {
   return (
     <div className='flex justify-center items-center bg-orange-100 p-2 rounded-lg'>
-      <Utensils size={20} className='text-orange-600'/>
+      <Utensils size={size} className='text-orange-600'/>
     </div>
   )
 }
 
-const Household = () => {
+const Household = ({ size }: { size: number }) => {
   return (
     <div className='flex justify-center items-center bg-orange-100 p-2 rounded-lg'>
-      <Armchair size={20} className='text-orange-600'/>
+      <Armchair size={size} className='text-orange-600'/>
     </div>
   )
 }
 
-const Groceries = () => {
+const Groceries = ({ size }: { size: number }) => {
   return (
     <div className='flex justify-center items-center bg-green-100 p-2 rounded-lg'>
-      <ShoppingBasket size={20} className='text-green-600'/>
+      <ShoppingBasket size={size} className='text-green-600'/>
     </div>
   )
 }
 
-const Gas = () => {
-  return(
+const Gas = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-red-100 p-2 rounded-lg'>
-      <Fuel size={20} className='text-red-600'/>
+      <Fuel size={size} className='text-red-600'/>
     </div>
   )
 }
 
-const Shopping = () => {
-  return(
+const Shopping = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-pink-100 p-2 rounded-lg'>
-      <Handbag size={20} className='text-pink-500'/>
+      <Handbag size={size} className='text-pink-500'/>
     </div>
   )
 }
 
-const Books = () => {
-  return(
+const Books = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-green-100 p-2 rounded-lg'>
-      <BookText size={20} className='text-green-600'/>
+      <BookText size={size} className='text-green-600'/>
     </div>
   )
 }
 
-const PersonalCare = () => {
-  return(
+const PersonalCare = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-blue-100 p-2 rounded-lg'>
-      <SoapDispenserDroplet size={20} className='text-blue-500'/>
+      <SoapDispenserDroplet size={size} className='text-blue-500'/>
     </div>
   )
 }
 
-const Subscriptions = () => {
-  return(
+const Subscriptions = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-blue-100 p-2 rounded-lg'>
-      <Tv size={20} className='text-blue-500'/>
+      <Tv size={size} className='text-blue-500'/>
     </div>
   )
 }
 
-const Utilities = () => {
-  return(
+const Utilities = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-yellow-100 p-2 rounded-lg'>
-      <Plug2 size={20} className='text-yellow-600'/>
+      <Plug2 size={size} className='text-yellow-600'/>
     </div>
   )
 }
 
-const VideoGames = () => {
-  return(
+const VideoGames = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-yellow-100 p-2 rounded-lg'>
-      <Gamepad2 size={20} className='text-yellow-600'/>
+      <Gamepad2 size={size} className='text-yellow-600'/>
     </div>
   )
 }
 
-const Rent = () => {
-  return(
+const Rent = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-red-100 p-2 rounded-lg'>
-      <House size={20} className='text-red-600'/>
+      <House size={size} className='text-red-600'/>
     </div>
   )
 }
 
-const Car = () => {
-  return(
+const Car = ({ size }: { size: number }) => {
+  return (
     <div className='flex justify-center items-center bg-blue-100 p-2 rounded-lg'>
-      <CarFront size={20} className='text-blue-500'/>
+      <CarFront size={size} className='text-blue-500'/>
     </div>
   )
 }
