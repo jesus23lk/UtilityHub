@@ -4,9 +4,9 @@ import { useState } from "react"
 import { FormModal, TextInput } from "../Components"
 import { decimalPlaces, formatMonthAbv, formatMoney } from "../helpers"
 import { categories } from "./shared"
-import { Button, DelButton } from "../Buttons"
-import { ChevronRight } from "lucide-react"
-import { updateTransaction } from "./actions"
+import { Button, DeleteButton, DeleteButton2, CancelButton } from "../Buttons"
+import { ChevronRight, CircleX } from "lucide-react"
+import { updateTransaction, deleteTransaction } from "./actions"
 import { useRouter } from "next/navigation";
 
 const EditTransaction = (props: {
@@ -17,6 +17,7 @@ const EditTransaction = (props: {
   category: string
   onClose: () => void
 }) =>  {
+
   const router = useRouter()   
   const [name, setName] = useState(props.name)
   const [amount, setAmount] = useState(String(props.amount))
@@ -24,6 +25,7 @@ const EditTransaction = (props: {
   const [date, setDate] = useState(props.date)
   const [ dateError, setDateError ] = useState(false)
   const [category, setCategory] = useState(props.category)
+  const [ deleteOpen, setDeleteOpen ] = useState(false)
 
   const validateAmount = (amount: string) =>{
     const numPlaces = decimalPlaces(amount)
@@ -61,6 +63,13 @@ const EditTransaction = (props: {
       props.id
     )
 
+    props.onClose()
+    router.refresh()
+  }
+
+  const processDeletion = async(e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    await deleteTransaction(props.id)
     props.onClose()
     router.refresh()
   }
@@ -111,11 +120,37 @@ const EditTransaction = (props: {
           </select>
         </label>
         <div className="flex justify-around">
-          <DelButton/>
+          <DeleteButton type='button' onClick={() => setDeleteOpen(true)}/>
           <Button type='submit'>Submit</Button>
         </div>
       </FormModal>
+      {deleteOpen && <DeleteModal onConfirm={processDeletion} onClose={() => setDeleteOpen(false)}/>}
     </div>
+  )
+}
+
+const DeleteModal = ({ onConfirm, onClose }: 
+{ onConfirm: (e: React.SubmitEvent<HTMLFormElement>) =>  Promise<void>, onClose: () => void}) => {
+
+  return(
+    <FormModal 
+      onClose={onClose} 
+      submitAction={(e) => {
+        onClose()
+        onConfirm(e)
+    }}>
+      <div className="flex flex-col items-center gap-3">
+        <CircleX className='text-red-500'size={40}/>
+        <div className="flex flex-col items-center">
+          <span className="text-lg">Delete Transaction?</span>
+          <span className="text-gray-500 text-sm">This action cannot be undone</span>
+        </div>
+      </div>
+      <div className="flex justify-center gap-3">
+        <CancelButton onClick={onClose}/>
+        <DeleteButton2 type="submit"/>
+      </div>
+    </FormModal>
   )
 }
 

@@ -33,7 +33,7 @@ export const IconBtn = ({children, onClick, type}: IconBtnProps) => {
   )
 }
 
-export const DelButton = ({children, onClick, type}: ButtonProps) => {
+export const DeleteButton = ({children, onClick, type}: ButtonProps) => {
   return(
     <button 
       className='bg-red-100 text-red-600 py-2 px-4 rounded-md flex items-center gap-1'
@@ -43,6 +43,22 @@ export const DelButton = ({children, onClick, type}: ButtonProps) => {
       {children}
       <Trash size={16}/>
       <span>Delete</span>
+    </button>
+  )
+}
+
+export const DeleteButton2 = ({onClick, type}: ButtonProps) => {
+  return(
+    <button className='bg-red-500 text-white py-2 px-4 rounded-md' onClick={onClick} type={type}>
+      Delete
+    </button>
+  )
+}
+
+export const CancelButton = ({onClick, type}: ButtonProps) => {
+  return(
+    <button className='bg-gray-400 text-white py-2 px-4 rounded-md' onClick={onClick} type={type}>
+      Cancel
     </button>
   )
 }

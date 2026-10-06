@@ -88,3 +88,19 @@ export const updateTransaction = async(
 
   if (error) console.log(error)
 }
+
+export const deleteTransaction = async (id: number) => {
+
+  const supabase = await createClient()
+  const { data: {user} } = await supabase.auth.getUser()
+  if (!user) return
+
+  const { error } = await supabase
+    .from('transactions')
+    .delete()
+    .eq('id', id)
+    .eq('user_id', user.id)
+
+  if (error) console.log(error.message)
+
+}
