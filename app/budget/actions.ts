@@ -109,11 +109,16 @@ type categoryStats = {
   total: number
 }
 
-export const getCategoryStats = async (): Promise<categoryStats[] | undefined> => {
+export const getCategoryStats = async (month: number, year: number): Promise<categoryStats[] | undefined> => {
   const supabase = await createClient()
 
+  month++
+
   const { data, error } = await supabase
-    .rpc('get_category_totals')
+    .rpc('get_category_totals', {
+      month,
+      year
+    })
 
   if (error) {
     console.log(error.message)
