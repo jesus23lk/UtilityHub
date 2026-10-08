@@ -35,7 +35,7 @@ async function Home({
   return (
     <MainBody>
       <Navbar text='Budget' />
-      <div className='flex flex-col gap-4 w-[85vw]'>
+      <div className='flex flex-col gap-4 max-w-4xl w-[85vw]'>
         <div className='flex justify-between items-center'>
           <span className='font-bold text-xl'>Categories</span>
           <MonthPicker month={month} year={year}/>
@@ -60,8 +60,8 @@ const CategoryStat = ({category, amount}: {category: string, amount: number}) =>
         <Icon size={25}/>
       </div>
       <div className='flex flex-col'>
-        <span className='text-sm font-semibold'>{category}</span>
-        <span className='text-base font-bold'>{formatMoney(amount)}</span>
+        <span className='text-sm'>{category}</span>
+        <span className='text-base font-semibold'>{formatMoney(amount)}</span>
       </div>
     </div>
   )
