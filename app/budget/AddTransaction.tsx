@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { Button } from "../Buttons";
+import { Button, AddButton } from "../Buttons";
 import { FormModal, TextInput } from "../Components";
 import { useRouter } from "next/navigation";
 import { todayISO, decimalPlaces } from "../helpers";
@@ -11,8 +11,8 @@ const AddTransaction = () => {
   const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <div className='flex justify-center gap-2'>
-      <Button onClick={() => setModalOpen(true)}>Add New</Button>
+    <div className='flex justify-center gap-2 pb-10'>
+      <AddButton onClick={() => setModalOpen(true)}/>
       {modalOpen && <AddTransModal onClose={() => setModalOpen(false)} />}
     </div>
   )

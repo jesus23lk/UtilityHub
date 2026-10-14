@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import { Trash } from "lucide-react"
+import { Plus } from "lucide-react"
 
 type ButtonProps = {
   children?: string
@@ -16,7 +17,7 @@ export const Button = ({children, onClick, type}: ButtonProps) => {
 }
 
 type IconBtnProps = {
-  children: ReactNode        // children must be the lucide icon
+  children?: ReactNode        // children must be the lucide icon
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset' 
 }
@@ -59,6 +60,18 @@ export const CancelButton = ({onClick, type}: ButtonProps) => {
   return(
     <button className='bg-gray-400 text-white py-2 px-4 rounded-md' onClick={onClick} type={type}>
       Cancel
+    </button>
+  )
+}
+
+export const AddButton = ({children=<Plus/>, onClick, type}: IconBtnProps) => {
+  return(
+    <button
+      onClick={onClick}
+      type={type}
+      className="bg-blue-500 text-white p-2 rounded-full fixed bottom-4 right-4"
+    >
+      {children}
     </button>
   )
 }
