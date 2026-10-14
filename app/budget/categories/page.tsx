@@ -3,8 +3,8 @@ import { redirect } from 'next/navigation'
 import Navbar from '../Navbar';
 import { MainBody } from '../../Components';
 import { getCategoryStats } from '../actions';
-import MonthPicker from './MonthPicker';
-import { categories } from '../shared';
+import MonthPicker from '../MonthPicker';
+import { categories, TotalBox } from '../shared';
 import { formatMoney } from '@/app/helpers';
 
 export const instant = false;
@@ -32,14 +32,21 @@ async function Home({
 
   const categoryStats = await getCategoryStats(month, year)
   // Render activities if any
+
+  let sum = 0
+  categoryStats?.forEach(({total}) => {
+    sum += total
+  })
+
   return (
     <MainBody>
       <Navbar text='Budget' />
-      <div className='flex flex-col gap-4 max-w-4xl w-[85vw]'>
+      <div className='flex flex-col gap-4 max-w-4xl w-[90vw]'>
         <div className='flex justify-between items-center'>
           <span className='font-bold text-xl'>Categories</span>
-          <MonthPicker month={month} year={year}/>
+          <MonthPicker month={month} year={year} page='categories'/>
         </div>
+        <TotalBox total={sum}/>
         <div className='flex flex-col justify-center gap-3'>
           {categoryStats!.map(({category, total}) => 
             <CategoryStat key={category} category={category} amount={total}/>

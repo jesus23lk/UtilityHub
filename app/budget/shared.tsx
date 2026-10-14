@@ -3,6 +3,7 @@ import {
   SoapDispenserDroplet, Tv, Plug2, House, Armchair, Gamepad2,
   BookText, CarFront
 } from 'lucide-react'
+import { formatMoney } from '../helpers'
 
 const Other = ({ size }: { size: number }) => {
   return (
@@ -153,3 +154,17 @@ export const monthAbvs = [
   'Nov',
   'Dec'
 ]
+
+// General use components
+export const TotalBox = ({total}: {total: number}) => {
+  return(
+    <div className='flex flex-col bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 py-3 px-4 rounded-lg'>
+      <span className='text-xs text-gray-600'>
+        Total Spent
+      </span>
+      <span className='text-lg font-bold'>
+        {formatMoney(total)}
+      </span>
+    </div>
+  )
+}

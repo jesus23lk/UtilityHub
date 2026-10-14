@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
-import { monthAbvs } from '../shared';
+import { monthAbvs } from './shared';
 import { useRouter } from 'next/navigation'
 
-const MonthPicker = (props: { month: number, year: number}) => {
+const MonthPicker = (props: { month: number, year: number, page: string}) => {
 
   const router = useRouter()
 
@@ -29,7 +29,7 @@ const MonthPicker = (props: { month: number, year: number}) => {
 
     setYear(newYear)
     setMonNumber(newMonth)
-    router.push(`/budget/categories?month=${newMonth}&year=${newYear}`)
+    router.push(`/budget/${props.page}?month=${newMonth}&year=${newYear}`)
   }
 
   return(
