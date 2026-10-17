@@ -69,7 +69,7 @@ export const AddButton = ({children=<Plus/>, onClick, type}: IconBtnProps) => {
     <button
       onClick={onClick}
       type={type}
-      className="bg-blue-500 text-white p-2 rounded-full fixed bottom-4 right-4"
+      className="bg-blue-500 text-white p-2 rounded-full fixed bottom-4 right-4 shadow-xl z-50"
     >
       {children}
     </button>

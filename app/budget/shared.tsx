@@ -1,7 +1,7 @@
 import {
   CreditCardIcon, Utensils, ShoppingBasket, Fuel, Handbag,
   SoapDispenserDroplet, Tv, Plug2, House, Armchair, Gamepad2,
-  BookText, CarFront
+  BookText, CarFront, Package
 } from 'lucide-react'
 import { formatMoney } from '../helpers'
 
@@ -109,6 +109,14 @@ const Car = ({ size }: { size: number }) => {
   )
 }
 
+const Moving = ({ size }: { size: number}) => {
+  return(
+    <div className='flex justify-center items-center bg-red-100 p-2 rounded-lg'>
+      <Package size={size} className='text-red-600'/>
+    </div>
+  )
+}
+
 export const categories = [
   { name: 'Other', icon: Other },
   { name: 'Dining', icon: Dining },
@@ -122,6 +130,7 @@ export const categories = [
   { name: 'Household', icon: Household },
   { name: 'Video Games', icon: VideoGames },
   { name: 'Books', icon: Books },
+  { name: 'Moving', icon: Moving },
   { name: 'Car', icon: Car }
 ]
 
