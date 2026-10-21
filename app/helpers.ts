@@ -25,7 +25,12 @@ export const formatISO = (date: Date) => {
 }
 
 export const todayISO = () => {
-  return new Date().toISOString().split('T')[0]
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+
+  return `${year}-${month}-${day}`
 }
 
 export const formatDate = (date: Date) => {
@@ -53,5 +58,8 @@ export const decimalPlaces = (amount: string) => {
 }
 
 export const formatMoney = (amount: number) => {
-  return `$${amount.toFixed(2)}`
+  return `$${amount.toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`
 }
