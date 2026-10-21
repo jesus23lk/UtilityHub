@@ -61,7 +61,8 @@ export const insertTransaction = async (
   name: string,
   amount: number,
   date: string,
-  category: string
+  category: string,
+  description: string
 ) => {
 
   if (!validateInputs(name, amount, date, category)) return
@@ -77,6 +78,7 @@ export const insertTransaction = async (
       amount: amount,
       date: date,
       category: category,
+      description: description,
       user_id: user.id
     })
 
@@ -88,6 +90,7 @@ export const updateTransaction = async(
   amount: number,
   date: string,
   category: string,
+  description: string,
   id: number
 ) => {
 
@@ -103,7 +106,8 @@ export const updateTransaction = async(
       name,
       amount,
       date,
-      category
+      category,
+      description
     })
     .eq('id', id)
     .eq('user_id', user.id)

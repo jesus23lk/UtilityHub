@@ -15,6 +15,7 @@ const EditTransaction = (props: {
   date: string
   id: number
   category: string
+  description: string
   onClose: () => void
 }) =>  {
 
@@ -26,6 +27,7 @@ const EditTransaction = (props: {
   const [ dateError, setDateError ] = useState(false)
   const [category, setCategory] = useState(props.category)
   const [ deleteOpen, setDeleteOpen ] = useState(false)
+  const [ description, setDescription ] = useState(props.description ?? '')
 
   const validateAmount = (amount: string) =>{
     const numPlaces = decimalPlaces(amount)
@@ -60,6 +62,7 @@ const EditTransaction = (props: {
       Number(amount),
       date,
       category,
+      description,
       props.id
     )
 
@@ -119,6 +122,15 @@ const EditTransaction = (props: {
               <option key={name} value={name}>{name}</option>)}
           </select>
         </label>
+        <label className="flex flex-col gap-1">
+          Description
+          <textarea 
+            rows={3}
+            className="border border-gray-300 p-2 rounded bg-slate-50"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </label>
         <div className="flex justify-around">
           <DeleteButton type='button' onClick={() => setDeleteOpen(true)}/>
           <Button type='submit'>Submit</Button>
@@ -154,8 +166,8 @@ const DeleteModal = ({ onConfirm, onClose }:
   )
 }
 
-const Transaction = ({name, amount, date, id, category}: 
-{name: string, amount: number, date: string, id: number, category: string}) => {
+const Transaction = ({name, amount, date, id, category, description}: 
+{name: string, amount: number, date: string, id: number, category: string, description: string}) => {
 
   const Icon = categories.find((item) => item.name === category)!.icon
   const [modalOpen, setModalOpen] = useState(false)
@@ -184,7 +196,7 @@ const Transaction = ({name, amount, date, id, category}:
           <ChevronRight strokeWidth={2} size={20} className='text-gray-400'/>
         </div>
       </div>
-      {modalOpen && <EditTransaction name={name} amount={amount} date={date} id={id} category={category} onClose={() => setModalOpen(false)}/>}
+      {modalOpen && <EditTransaction name={name} amount={amount} date={date} id={id} category={category} description={description} onClose={() => setModalOpen(false)}/>}
     </>
   )
 }

@@ -27,6 +27,7 @@ const AddTransModal = ({ onClose }: {onClose: () => void}) => {
   const [ date, setDate ] = useState(todayISO())
   const [ dateError, setDateError ] = useState(false)
   const [ category, setCategory ] = useState('Other')
+  const [ description, setDescription ] = useState('')
 
   const validateAmount = (amount: string) =>{
     const numPlaces = decimalPlaces(amount)
@@ -60,7 +61,8 @@ const AddTransModal = ({ onClose }: {onClose: () => void}) => {
       name,
       Number(amount),
       date,
-      category
+      category,
+      description
     )
 
     onClose()
@@ -106,6 +108,15 @@ const AddTransModal = ({ onClose }: {onClose: () => void}) => {
           {categories.map(({name}) =>
             <option key={name}>{name}</option>)}
         </select>
+      </label>
+      <label className="flex flex-col gap-1">
+        Description
+        <textarea 
+          rows={3}
+          className="border border-gray-300 p-2 rounded bg-slate-50"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
       </label>
       <Button type='submit'>Submit</Button>
     </FormModal>

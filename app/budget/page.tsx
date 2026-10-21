@@ -47,7 +47,7 @@ async function Home({ searchParams }:
         </div>
         <TotalBox total={sum}/>
         <div className='divide-y divide-gray-200 rounded-lg shadow-sm overflow-hidden'>
-          { transactions?.map(({name, amount, date, category, id}) =>
+          { transactions?.map(({name, amount, date, category, id, description}) =>
             <Transaction 
               name={name}
               amount={amount}
@@ -55,6 +55,7 @@ async function Home({ searchParams }:
               category={category}
               id={id}
               key={id}
+              description={description}
             />
           )}
         </div>
